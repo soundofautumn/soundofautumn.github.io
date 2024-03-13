@@ -63,3 +63,8 @@ deploy:
   type: git
   repo: git@github.com:soundofautumn/soundofautumn.github.io
   branch: main
+math:
+  mathjax:
+    enable: false
+  katax:
+    enable: false  

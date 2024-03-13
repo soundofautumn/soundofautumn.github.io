@@ -129,7 +129,7 @@ pjax:
 
 # 公式前端渲染
 mathjax:
-  enable: false
+  enable: true
   version: "2.6.1"
 
 # 在 `<head>` 标签内引入 CSS 样式表
