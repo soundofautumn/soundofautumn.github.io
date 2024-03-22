@@ -1,0 +1,20 @@
+name: clear-image
+
+on:
+  push:
+    branches: [master] # 注意更改为你的 branch, 例如 master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Clear image
+        uses: yiyungent/clear-image-action@main
+        with:
+          # 默认为空, 即为仓库根目录
+          scan_directory: ""
+          # 多个路径之间用 英文逗号 , 隔开, 用相对于仓库根目录的 相对路径
+          ignore_paths: ""
