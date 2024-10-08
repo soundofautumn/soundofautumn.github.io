@@ -11,12 +11,13 @@ canvas_dust: true
 # light 亮色模式
 # -only 锁定颜色模式
 # auto 跟随系统
-color: dark
+color: dark-only
 
 # <body> 背景图片链接
 background_image:
-  dark: https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg # 暗色模式
-  light: /img/bk.jpg # 亮色模式
+  # dark: https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg # 暗色模式
+  dark: /img/nengtianshi.png # 暗色模式
+  # light: /img/nengtianshi.png # 亮色模式
 
 # 导航栏
 menu:
