@@ -17,4 +17,4 @@ jobs:
           # 默认为空, 即为仓库根目录
           scan_directory: ""
           # 多个路径之间用 英文逗号 , 隔开, 用相对于仓库根目录的 相对路径
-          ignore_paths: ""
+          ignore_paths: "source/img"
