@@ -2,19 +2,34 @@ name: clear-image
 
 on:
   push:
-    branches: [master] # 注意更改为你的 branch, 例如 master
+    branches: [master]
+
+permissions:
+  contents: write
 
 jobs:
-  build:
+  clear-image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
-        uses: actions/checkout@v2
-
-      - name: Clear image
-        uses: yiyungent/clear-image-action@main
+        uses: actions/checkout@v4
         with:
-          # 默认为空, 即为仓库根目录
-          scan_directory: ""
-          # 多个路径之间用 英文逗号 , 隔开, 用相对于仓库根目录的 相对路径
-          ignore_paths: "source/img"
+          fetch-depth: 0
+
+      - name: Clear unused images
+        run: |
+          python .github/scripts/clear_unused_images.py \
+            --scan-directory "." \
+            --ignore-paths "source/img"
+
+      - name: Commit cleanup changes
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No unused images removed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: clear unused images"
+          git push
